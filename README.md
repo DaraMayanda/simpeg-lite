@@ -63,6 +63,11 @@ Menyediakan platform digital untuk:
 5. Kembali ke GitHub Desktop → akan muncul perubahan
 6. Isi Summary: `update readme`, lalu klik **Commit to main** → **Push origin**
 
+👩‍💻 Developer
+Dara Mayanda
+Mahasiswa Informatika – Universitas Malikussaleh
+GitHub: @DaraMayanda
+
 ---
 
 Kalau kamu mau aku bantu buat cover banner GitHub (markdown/image), daftar fitur lebih teknis, atau preview tampilan, tinggal bilang ya!
