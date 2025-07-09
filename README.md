@@ -67,7 +67,3 @@ Menyediakan platform digital untuk:
 Dara Mayanda
 Mahasiswa Informatika – Universitas Malikussaleh
 GitHub: @DaraMayanda
-
----
-
-Kalau kamu mau aku bantu buat cover banner GitHub (markdown/image), daftar fitur lebih teknis, atau preview tampilan, tinggal bilang ya!
