@@ -50,20 +50,8 @@ Menyediakan platform digital untuk:
 
 ---
 
-5. Scroll ke bawah → isi pesan commit (misal: `Update README`) → klik **Commit changes**
+## 👩‍💻 Developer
+Dara Mayanda  
+Mahasiswa Informatika – Universitas Malikussaleh  
+GitHub: [@DaraMayanda](https://github.com/DaraMayanda)
 
----
-
-### 🖥️ **CARA 2: Edit dari Komputer (Notepad / VS Code)**
-
-1. Klik **"Show in Explorer"** di GitHub Desktop
-2. Buka file `README.md` pakai Notepad / VS Code
-3. Tempelkan isi yang di atas
-4. Simpan (`Ctrl + S`)
-5. Kembali ke GitHub Desktop → akan muncul perubahan
-6. Isi Summary: `update readme`, lalu klik **Commit to main** → **Push origin**
-
-👩‍💻 Developer
-Dara Mayanda
-Mahasiswa Informatika – Universitas Malikussaleh
-GitHub: @DaraMayanda
