@@ -40,8 +40,8 @@ Menyediakan platform digital untuk:
 
 | Komponen         | Tools                  |
 |------------------|------------------------|
-| Framework        | Laravel 10 / 11        |
-| DBMS             | MySQL / MariaDB        |
+| Framework        | Laravel 10             |
+| DBMS             | MySQL                  |
 | Editor           | VS Code                |
 | UI Design        | Tailwind / Bootstrap 5 |
 | Diagram & ERD    | dbdiagram.io / draw.io |
