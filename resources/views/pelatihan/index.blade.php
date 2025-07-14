@@ -4,8 +4,11 @@
     <h2 class="section-title text-left">📚 Data Pelatihan Pegawai</h2>
 
     <a href="{{ route('pelatihan.create') }}" class="btn" style="margin-bottom: 20px;">+ Tambah Data</a>
+    <a href="{{ route('pelatihan.export.pdf') }}" class="btn" style="background-color: darkgreen; color: white; margin-bottom: 15px;">
+    📄 Export PDF
+</a>
 
-    <table class="table" style="width: 100%; border-collapse: collapse; background:rgb(75, 133, 141);">
+    <table class="table" style="width: 100%; border-collapse: collapse; background: rgb(75, 133, 141);">
         <thead style="background: #3f8c9c; color: white;">
             <tr>
                 <th style="text-align: center; padding: 10px;">No</th>
@@ -24,18 +27,22 @@
                     <td style="padding: 10px;">{{ $pelatihan->pegawai->nama }}</td>
                     <td style="padding: 10px;">{{ $pelatihan->nama_pelatihan }}</td>
                     <td style="padding: 10px;">
-                        {{ \Carbon\Carbon::parse($pelatihan->tanggal_mulai)->format('d M Y') }} - 
+                        {{ \Carbon\Carbon::parse($pelatihan->tanggal_mulai)->format('d M Y') }} -
                         {{ \Carbon\Carbon::parse($pelatihan->tanggal_selesai)->format('d M Y') }}
                     </td>
                     <td style="padding: 10px;">{{ $pelatihan->penyelenggara }}</td>
                     <td style="padding: 10px;">{{ $pelatihan->keterangan ?? '-' }}</td>
                     <td style="padding: 10px;">
-                        <a href="{{ route('pelatihan.edit', $pelatihan->id) }}" class="btn btn-sm">✏️ Edit</a>
-                        <form action="{{ route('pelatihan.destroy', $pelatihan->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">🗑️ Hapus</button>
-                        </form>
+                        <div style="display: flex; justify-content: center; gap: 6px;">
+                            <a href="{{ route('pelatihan.edit', $pelatihan->id) }}" class="btn btn-sm" style="background-color: #176ce4ff; color:  #ffffffff">
+                                ✏️ Edit
+                            </a>
+                            <form action="{{ route('pelatihan.destroy', $pelatihan->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">🗑️ Hapus</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @empty

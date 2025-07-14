@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JabatanRiwayat;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf; // ✅ INI HARUS DI SINI
 
 class JabatanRiwayatController extends Controller
 {
@@ -24,46 +25,67 @@ class JabatanRiwayatController extends Controller
     {
         $request->validate([
             'pegawai_id' => 'required|exists:pegawais,id',
-            'jabatan_baru' => 'required|string|max:100',
-            'tanggal_berubah' => 'required|date',
-            'keterangan' => 'nullable|string|max:255', // validasi keterangan
+            'jabatan_lama' => 'nullable|string|max:255',
+            'jabatan_baru' => 'required|string|max:255',
+            'tanggal_masuk' => 'nullable|date',
+            'tanggal_berakhir' => 'nullable|date',
+            'tanggal_berubah' => 'nullable|date',
+            'keterangan' => 'nullable|string',
         ]);
 
-        JabatanRiwayat::create($request->all());
+        $data = $request->all();
 
-        return redirect()->route('riwayat-jabatan.index')->with('success', 'Data berhasil disimpan.');
+        foreach (['tanggal_masuk', 'tanggal_berakhir', 'tanggal_berubah'] as $field) {
+            if (isset($data[$field]) && ($data[$field] === 'null' || $data[$field] === '')) {
+                $data[$field] = null;
+            }
+        }
+
+        JabatanRiwayat::create($data);
+
+        return redirect()->route('riwayat-jabatan.index')
+                         ->with('success', 'Riwayat jabatan berhasil ditambahkan.');
     }
 
-    public function show(JabatanRiwayat $jabatanRiwayat)
+    public function update(Request $request, $id)
     {
-        return view('riwayat-jabatan.show', compact('jabatanRiwayat'));
+        $request->validate([
+            'pegawai_id' => 'required|exists:pegawais,id',
+            'jabatan_lama' => 'nullable|string|max:255',
+            'jabatan_baru' => 'nullable|string|max:255',
+            'tanggal_masuk' => 'nullable|date',
+            'tanggal_berakhir' => 'nullable|date',
+            'tanggal_berubah' => 'nullable|date',
+            'keterangan' => 'nullable|string',
+        ]);
+
+        $riwayat = JabatanRiwayat::findOrFail($id);
+        $riwayat->update($request->all());
+
+        return redirect()->route('riwayat-jabatan.index')
+                         ->with('success', 'Riwayat jabatan berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $riwayat = JabatanRiwayat::findOrFail($id);
+        $riwayat->delete();
+
+        return redirect()->route('riwayat-jabatan.index')
+                         ->with('success', 'Riwayat jabatan berhasil dihapus.');
     }
 
     public function edit($id)
     {
-        $jabatanRiwayat = JabatanRiwayat::findOrFail($id);
+        $riwayat = JabatanRiwayat::findOrFail($id);
         $pegawais = Pegawai::all();
-        return view('riwayat-jabatan.edit', compact('jabatanRiwayat', 'pegawais'));
+        return view('riwayat-jabatan.edit', compact('riwayat', 'pegawais'));
     }
 
-    public function update(Request $request, JabatanRiwayat $jabatanRiwayat)
+    public function exportPdf()
     {
-        $request->validate([
-            'pegawai_id' => 'required|exists:pegawais,id',
-            'jabatan_baru' => 'required|string|max:100',
-            'tanggal_berubah' => 'required|date',
-            'keterangan' => 'nullable|string|max:255', // validasi keterangan
-        ]);
-
-        $jabatanRiwayat->update($request->all());
-
-        return redirect()->route('riwayat-jabatan.index')->with('success', 'Data berhasil diperbarui.');
+        $riwayats = JabatanRiwayat::with('pegawai')->get();
+        $pdf = Pdf::loadView('riwayat-jabatan.export_pdf', compact('riwayats'));
+        return $pdf->download('riwayat-jabatan.pdf');
     }
-
-    public function destroy(JabatanRiwayat $jabatanRiwayat)
-{
-    $jabatanRiwayat->delete();
-
-    return redirect()->route('riwayat-jabatan.index')->with('success', 'Data berhasil dihapus.');
-}
 }

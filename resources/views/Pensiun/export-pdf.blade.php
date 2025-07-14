@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Export PDF - Data Pegawai</title>
+    <title>Export PDF - Data Pensiun</title>
     <style>
         body { font-family: sans-serif; font-size: 12px; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
@@ -11,31 +11,25 @@
     </style>
 </head>
 <body>
-    <h3 style="text-align: center;">Laporan Data Pegawai</h3>
+    <h3 style="text-align: center;">Laporan Data Pensiun</h3>
     <table>
         <thead>
             <tr>
                 <th>No</th>
                 <th>NIP</th>
                 <th>Nama</th>
-                <th>Jabatan</th>
-                <th>Golongan</th>
-                <th>Status</th>
-                <th>Tanggal Lahir</th>
-                <th>Tanggal Masuk</th>
+                <th>Tanggal Pensiun</th>
+                <th>Keterangan</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($pegawais as $index => $p)
+            @foreach ($pensiuns as $index => $p)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $p->nip }}</td>
-                    <td>{{ $p->nama }}</td>
-                    <td>{{ $p->jabatan }}</td>
-                    <td>{{ $p->golongan }}</td>
-                    <td>{{ $p->status }}</td>
-                    <td>{{ $p->tanggal_lahir ?? '-' }}</td>
-                    <td>{{ $p->tanggal_masuk ?? '-' }}</td>
+                    <td>{{ $p->pegawai->nip ?? '-' }}</td>
+                    <td>{{ $p->pegawai->nama ?? '-' }}</td>
+                    <td>{{ $p->tanggal_pensiun ?? '-' }}</td>
+                    <td>{{ $p->keterangan ?? '-' }}</td>
                 </tr>
             @endforeach
         </tbody>

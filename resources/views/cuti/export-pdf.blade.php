@@ -6,7 +6,7 @@
         body { font-family: sans-serif; font-size: 12px; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th, td { border: 1px solid #000; padding: 6px; text-align: center; }
-        th { background-color: #f2f2f2; }
+        th { background-color:  #BCE6E3; }
         h3 { text-align: center; }
     </style>
 </head>

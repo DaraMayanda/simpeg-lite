@@ -5,23 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class JabatanRiwayat extends Model
+class Pensiun extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-    'pegawai_id',
-    'jabatan_lama',
-    'jabatan_baru',
-    'tanggal_masuk',
-    'tanggal_berakhir',
-    'tanggal_berubah',
-    'keterangan',
-];
-
+        'pegawai_id',
+        'tanggal_pensiun',
+        'keterangan',
+    ];
 
     public function pegawai()
     {
         return $this->belongsTo(Pegawai::class);
     }
+    
 }
+

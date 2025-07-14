@@ -4,36 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\JabatanRiwayat;
-use App\Models\Cuti;
-use App\Models\Pelatihan;
 
 class Pegawai extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nip',
-        'nama',
-        'jabatan',
-        'golongan',
-        'status',
-        'tanggal_lahir',
-        'alamat',
+        'nip', 'nama', 'jabatan', 'golongan', 'pangkat',
+        'tanggal_lahir', 'tanggal_masuk', 'alamat', 'status'
     ];
 
-    public function jabatanRiwayats()
+    public function pensiun()
     {
-        return $this->hasMany(JabatanRiwayat::class);
+        return $this->hasOne(Pensiun::class);
     }
-
-    public function cuti()
-    {
-        return $this->hasMany(Cuti::class);
-    }
-
-    public function pelatihan()
-    {
-        return $this->hasMany(Pelatihan::class);
-    }
+    
 }

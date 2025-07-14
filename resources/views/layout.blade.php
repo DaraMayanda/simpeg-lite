@@ -119,12 +119,15 @@
     </div>
 
     <div class="nav">
-        <a href="{{ route('dashboard') }}">🏠 Dashboard</a> |
-        <a href="{{ route('pegawai.index') }}">Data Pegawai</a> |
-        <a href="{{ route('riwayat-jabatan.index') }}">Riwayat Jabatan</a> |
-        <a href="{{ route('cuti.index') }}">Data Cuti</a> |
-        <a href="{{ route('pelatihan.index') }}">Data Pelatihan</a>
-    </div>
+    <a href="{{ route('dashboard') }}">🏠 Dashboard</a> |
+    <a href="{{ route('pegawai.index') }}">Data Pegawai</a> |
+    <a href="{{ route('riwayat-jabatan.index') }}">Riwayat Jabatan</a> |
+    <a href="{{ route('cuti.index') }}">Data Cuti</a> |
+    <a href="{{ route('pelatihan.index') }}">Data Pelatihan</a> |
+    <a href="{{ route('pensiun.index') }}">Data Pensiun</a>
+</div>
+
+    
 
     @if (session('success'))
         <div class="alert-success">

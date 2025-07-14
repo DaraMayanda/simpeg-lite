@@ -4,24 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf; // <- Tambahkan ini
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PegawaiController extends Controller
 {
-    // Tampilkan semua data pegawai
     public function index()
     {
         $pegawai = Pegawai::all();
         return view('pegawai.index', compact('pegawai'));
     }
 
-    // Tampilkan form tambah pegawai
     public function create()
     {
         return view('pegawai.create');
     }
 
-    // Simpan data pegawai baru ke database
     public function store(Request $request)
     {
         $request->validate([
@@ -29,7 +26,9 @@ class PegawaiController extends Controller
             'nama' => 'required',
             'jabatan' => 'required',
             'golongan' => 'required',
+            'pangkat' => 'required',
             'status' => 'required',
+            'tanggal_masuk' => 'nullable|date',
         ]);
 
         Pegawai::create($request->all());
@@ -37,13 +36,12 @@ class PegawaiController extends Controller
         return redirect()->route('pegawai.index')->with('success', 'Data berhasil ditambahkan');
     }
 
-    // Tampilkan form edit untuk pegawai tertentu
-    public function edit(Pegawai $pegawai)
+    public function edit($id)
     {
+        $pegawai = Pegawai::findOrFail($id);
         return view('pegawai.edit', compact('pegawai'));
     }
 
-    // Update data pegawai ke database
     public function update(Request $request, Pegawai $pegawai)
     {
         $request->validate([
@@ -51,7 +49,9 @@ class PegawaiController extends Controller
             'nama' => 'required',
             'jabatan' => 'required',
             'golongan' => 'required',
+            'pangkat' => 'required',
             'status' => 'required',
+            'tanggal_masuk' => 'nullable|date',
         ]);
 
         $pegawai->update($request->all());
@@ -59,14 +59,12 @@ class PegawaiController extends Controller
         return redirect()->route('pegawai.index')->with('success', 'Data berhasil diperbarui');
     }
 
-    // Hapus data pegawai
     public function destroy(Pegawai $pegawai)
     {
         $pegawai->delete();
         return redirect()->route('pegawai.index')->with('success', 'Data berhasil dihapus');
     }
 
-    // Export PDF
     public function exportPdf()
     {
         $pegawais = Pegawai::all();
