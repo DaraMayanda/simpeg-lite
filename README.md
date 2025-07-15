@@ -1,51 +1,51 @@
-# SIMPEG LITE – Sistem Informasi Kepegawaian
+# SIMPEG LITE
 
-**SIMPEG LITE** adalah aplikasi web berbasis Laravel yang dirancang untuk mempermudah pengelolaan data kepegawaian instansi secara digital, efisien, dan terstruktur. Sistem ini dibangun sebagai bagian dari portofolio pengembangan backend dan dapat digunakan oleh instansi pemerintahan maupun lembaga swasta.
+**Sistem Informasi Manajemen Kepegawaian - Versi Ringan**
+
+SIMPEG LITE adalah aplikasi berbasis Laravel yang dirancang untuk memudahkan pengelolaan data kepegawaian, seperti data pegawai aktif, cuti, pensiun, riwayat jabatan, pelatihan, dan laporan PDF.
 
 ## ✨ Fitur Utama
 
-✅ Manajemen Data Pegawai  
-✅ Riwayat Jabatan & Status Pegawai  
-✅ Validasi Formulir Otomatis  
-✅ Dashboard dan Filter Pencarian  
-✅ Ekspor Data ke PDF  
-✅ UI Responsif dengan Bootstrap 5
+- 📋 Manajemen Data Pegawai
+- 📈 Dashboard Statistik (Pegawai Aktif, Cuti, Pensiun, dan Grafik Pelatihan)
+- 📝 Riwayat Jabatan dengan ekspor PDF
+- 📊 Visualisasi Grafik Pelatihan Bulanan
+- 📤 Ekspor laporan ke PDF (DomPDF)
+- 💻 UI Responsif menggunakan Bootstrap
 
 ## 🛠️ Teknologi yang Digunakan
 
-| Teknologi | Keterangan |
-|----------|------------|
-| **Framework** | Laravel 9 |
-| **Database** | MySQL |
-| **Template Engine** | Blade |
-| **Frontend** | Bootstrap 5, Bootstrap Icons |
-| **PDF Generator** | DomPDF |
+- **Framework**: Laravel 9
+- **Frontend**: Blade + Bootstrap 5
+- **Database**: MySQL
+- **Export PDF**: DomPDF
 
 ## 📁 Struktur Folder Penting
 
-| Folder / File | Keterangan |
-|---------------|------------|
-| `/app` | Controller, Model, Middleware |
-| `/resources/views` | Blade template (HTML) |
-| `/routes/web.php` | Routing utama aplikasi |
-| `/database` | Seeder dan migrasi MySQL |
-| `/public` | Aset publik (CSS, JS, icon, gambar) |
-| `.env.example` | Contoh konfigurasi environment |
+| Folder / File            | Deskripsi                                 |
+|--------------------------|-------------------------------------------|
+| `app/`                   | Controller, Model, Middleware             |
+| `routes/web.php`         | Routing aplikasi                          |
+| `resources/views/`       | Template tampilan Blade                   |
+| `public/`                | Aset publik (CSS, JS, Gambar)             |
+| `database/`              | Seeder dan Migrations                     |
+| `storage/`               | File penyimpanan                          |
 
-## 📷 Tampilan Antarmuka
+## 📷 Screenshot Antarmuka
 
-**🔹 Data Pegawai**  
-📌 Menampilkan daftar pegawai lengkap dengan informasi jabatan, golongan, dan status.
+### 📌 Dashboard SIMPEG LITE
+![Dashboard SIMPEG](public/screenshots/DashboardSimpeg.jpg)
 
-**🔹 Riwayat Jabatan**  
-📌 Melacak perubahan jabatan tiap pegawai beserta tanggal perubahan.
+### 📌 Riwayat Jabatan Pegawai
+![Riwayat Jabatan](public/screenshots/DataRiwayatJabatansimpeg.jpg)
 
-**🔹 Form Tambah Pegawai**  
-📌 Form isian terstruktur dengan validasi otomatis.
+### 📌 Grafik Pelatihan Pegawai
+![Grafik Pelatihan](public/screenshots/GrafikPelatihan.jpg)
 
-> *(Tambahkan screenshot di sini jika ada, misalnya `/public/screenshots/dashboard.png`)*
+### 📌 Laporan PDF Ekspor
+![Laporan PDF](public/screenshots/DompdfRiwayatJabatan.jpg)
 
-## 🚀 Cara Menjalankan Proyek Ini
+## 🚀 Cara Menjalankan Aplikasi
 
 ```bash
 git clone https://github.com/DaraMayanda/simpeg-lite.git
